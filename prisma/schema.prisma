@@ -19,13 +19,17 @@ model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
   password  String
-  role      String   @default("USER")
+  role      Role  @default(USER)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   clients   Client[]
   sales     Sale[]
 }
 
+enum Role {
+  USER
+  ADMIN
+}
 model Client {
   id        Int      @id @default(autoincrement())
   name      String
